@@ -17,8 +17,16 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-function dateSample(/* sampleActivity */) {
-  throw new NotImplementedError('Not implemented');
+function dateSample(n) {
+  if ((n/1)===0 || Array.isArray(n) || typeof(n)==="number") {return false};
+
+  const k=0.693/HALF_LIFE_PERIOD;
+  let t= (Math.log(15/n))/k;
+  let number= Math.ceil(t);
+  
+  if (number>0){
+    return number
+  } else {return false}
   // remove line with error and write your code here
 }
 
