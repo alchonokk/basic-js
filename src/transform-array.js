@@ -17,8 +17,12 @@ function transform(arr) {
   if (!Array.isArray(arr)) {
     throw new Error("'arr' parameter must be an instance of the Array!");
   }
+return arr.map((el, index) => {
+  if (el === '--double-next'){
+    el= el[index+1]
+  }
+})
 
-  
 }
 
 module.exports = {
