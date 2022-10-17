@@ -16,7 +16,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function repeater(str, options) {
-  let {
+  const {
     repeatTimes,
     separator,
     addition,
@@ -24,9 +24,9 @@ function repeater(str, options) {
     additionSeparator,
   } = options;
 
-  if (addition === false) addition = 'false';
   if (addition === null) addition = 'null';
-
+  if (addition === false) addition = 'false';
+  
   let addedItems = new Array(additionRepeatTimes)
     .fill(addition)
     .join(additionSeparator || '|');
