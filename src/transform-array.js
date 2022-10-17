@@ -17,12 +17,27 @@ function transform(arr) {
   if (!Array.isArray(arr)) {
     throw new Error("'arr' parameter must be an instance of the Array!");
   }
-return arr.map((el, index) => {
-  if (el === '--double-next'){
-    el= el[index+1]
-  }
-})
 
+  const controlWord = {
+    '--discard-next': true,
+    '--discard-prev': true,
+    '--double-next': true,
+    '--double-prev': true,
+  };
+
+  return arr
+  .filter((elem, index) => arr[index - 1] !== '--discard-next')
+  .filter((elem, index) => arr[index + 1] !== '--discard-prev')
+  .map((el, index) => {
+  if (el === '--double-next' && index !== arr.length - 1){
+    return arr[index + 1];
+  }
+  if (el === '--double-prev' && index){
+    return arr[index-1]
+  }
+  return el;
+  })
+  .filter((el) => !controlWord[el])
 }
 
 module.exports = {
