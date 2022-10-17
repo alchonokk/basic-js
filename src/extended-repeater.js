@@ -16,7 +16,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function repeater(str, options) {
-  const {
+  let {
     repeatTimes,
     separator,
     addition,
@@ -34,7 +34,6 @@ function repeater(str, options) {
   let resultArray = new Array(repeatTimes)
     .fill(str + addedItems)
     .join(separator || '+');
-
   return resultArray;
 }
 
